@@ -1,4 +1,4 @@
-# Analisis Dentix
+# Análisis Dentix
 
 Repositorio con el análisis de datos y modelos desarrollados para Dentix (Colombia). Contiene limpieza y preparación de datos, análisis descriptivo (univariado y bivariado), gráficos y visualizaciones, selección de variables y modelos de predicción.
 
