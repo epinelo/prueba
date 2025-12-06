@@ -1,153 +1,84 @@
 # Analisis Dentix
 
-Repositorio con el análisis de datos y modelos desarrollados para Dentix (Colombia). Contiene limpieza y preparación de datos, análisis descriptivo (univariado y bivariado), selección de variables, modelado para predicción de mora y modelado para estimar monto de desembolso, además de los reportes técnicos y ejecutivos.
+Repositorio con el análisis de datos y modelos desarrollados para Dentix (Colombia). Contiene limpieza y preparación de datos, análisis descriptivo (univariado y bivariado), gráficos y visualizaciones, selección de variables y modelos de predicción.
 
-Estructura general
+## Estructura general
 
-Las carpetas principales y archivos relevantes:
+- `Códigos/` — Scripts en R y Python para limpieza, análisis, visualización, selección de variables y modelado.
 
-Códigos/ — Scripts en R (y algunos en Python) para limpieza, análisis, selección de variables y modelado.
+- `Correlaciones/` — Gráficos de correlaciones, varianzas y distribuciones por y entre variables. 
 
-Correlaciones/ — Matrices y gráficas de correlación (Pearson, Eta, V de Cramér).
+- `Univariado Numéricas/` — Gráficos para variables numéricas.
 
-Univariado Numéricas/ — Gráficos y tablas descriptivas para variables numéricas.
+- `Univariado Categóricas/` — Gráficos para variables categóricas.
 
-Univariado Categóricas/ — Gráficos y tablas para variables categóricas.
+## Objetivos
 
-LICENSE — Archivo de licencia (MIT).
+1. Realizar un diagnóstico profundo de los factores que explican distintas variables como la probabilidad de mora y las diferencias entre clientes y clínicas de Dentix.
+2. Realizar una segmentación de clientes buscando perfiles de alto, mediano y bajo riesgo.
+3. Desarrollar modelos predictivos para estimar monto de desembolso según el perfil del cliente.
+4. Generar propuestas para maximizar la rentabilidad del negocio de Dentix.
 
-HojaDeInstruccionesDentix.pdf — Alcance y requerimientos del proyecto.
+## Resumen del dataset
 
-ReporteCompleto.pdf — Documento técnico con detalles del análisis y modelos.
+- Observaciones: ~46,329 registros (datos anonimizados).
+- Variables:
+    - Numéricas: ingresos_fijos, activos, pasivos, cuota_credito,cuota_mensual, saldo_capital, saldo_vencido, dias_mora, score, monto_desembolso, plazo, tasa,
+    - Categóricas: nivel_estudios, estado_civil, tipo_vivienda, estrato, actividad_económica, tipo_contrato, ocupacion, genero, clinica, comercial, region, lugar_nacimiento, mora_franja 
+edad, tiempo_residencia, tiempo_actividad, personas_a_cargo
 
-ReporteResumido.pdf — Resumen ejecutivo con hallazgos y recomendaciones.
+## Metodología (pasos principales)
 
-Objetivos
+### Preprocesamiento
 
-Identificar variables que expliquen la probabilidad de mora y el monto aprobado.
+- Limpieza de NAs según criterio por variable.
+- Transformaciones (por ejemplo log) en variables con sesgo.
+- Creación de variables binarias para manejar zero-inflation.
+- Detección y tratamiento de outliers según reglas estadísticas y de negocio.
 
-Construir un score predictivo para clasificar franjas de mora.
+### Análisis exploratorio
 
-Desarrollar un modelo para estimar monto de desembolso según el perfil del cliente.
+- Estadísticas univariadas por tipo de variable.
+- Análisis bivariado: correlaciones, pruebas Kruskal-Wallis, chi-cuadrado y MANOVA según corresponda.
+- Visualizaciones para entender distribuciones y relaciones.
 
-Resumen del dataset
+### Selección de variables
 
-Observaciones: ~46,329 registros (datos anonimizados).
+- Filtrado por correlación y varianza.
+- Reducción por PCA y MCA.
+- Selección usando LASSO.
+- Las variables finales son las que aparecen en al menos 2 de los 3 métodos anteriores.
 
-Variables: mezcla de numéricas (ingresos, activos, pasivos, monto, cuota, días de mora, score, etc.) y categóricas (región, clínica, nivel de estudios, estado civil, ocupación, tipo de vivienda, etc.).
+### Modelado
 
-Características relevantes: variables con concentración de ceros, desbalance en la variable objetivo (mora_franja) y presencia de outliers en variables financieras.
+- Clasificación para mora_franja.
+- Regresión para monto_desembolso.
+- Validación cruzada y control de sobreajuste.
 
-Metodología (pasos principales)
+## Resultados clave (resumen)
 
-Preprocesamiento
+- Se identificaron 6 perfiles diferentes dentro de la clientela de Dentix.
+- Dentix puede aumentar los montos ofrecidos, ofrecer plazos más largos o mejorar las tasas a los clientes del perfil 6 (empleados padres de familia).
+- Sobreestimación de clientes en el perfil 5 (empleados independientes con mal score) los cuales cuentan con un riesgo crítico. Establecer umbrales de score más altos.
+- Cálculo de score interno para evaluación de clientes en la asignaciñon de montos credicticios y tasas según comportamientos y características de los clientes que son capturadas por el score externo.
 
-Limpieza de NAs según criterio por variable.
+## Métricas usadas
 
-Transformaciones (por ejemplo log) en variables con sesgo.
+- Pearson
+- Tasa de correlación Eta
+- V de Cramér
+- Prueba de hipótesis de Chi cuadrada
+- Z-test
+- Mann-Whitney
+- Precision
+- Recall
+- F1 score
+- AUC-PR
+- Matriz de confusión
+- MAE
+- RMSE
+- R2 ajustado
 
-Creación de variables binarias para manejar zero-inflation.
+## Conclusiones
 
-Detección y tratamiento de outliers según reglas estadísticas y de negocio.
-
-Análisis exploratorio
-
-Estadísticas univariadas por tipo de variable.
-
-Análisis bivariado: correlaciones, pruebas Kruskal-Wallis y chi-cuadrado según corresponda.
-
-Visualizaciones para entender distribuciones y relaciones.
-
-Selección de variables
-
-Filtrado por correlación y varianza.
-
-Reducción por PCA/MCA cuando aplica.
-
-Selección embebida usando LASSO.
-
-Variables finales son las que aparecen en al menos 2 de los 3 métodos anteriores.
-
-Modelado
-
-Clasificación para mora_franja (evaluación con Precision, Recall, F1, AUC-PR).
-
-Regresión para monto_desembolso (MAE, RMSE, R² ajustado).
-
-Validación cruzada y control de sobreajuste.
-
-Variables seleccionadas (ejemplo)
-
-Conjunto final aproximado (nominal):
-actividad_economica, activos, clinica, comercial, cuota_credito, cuota_mensual, region, edad, estado_civil, estrato, gastos_sostenimiento, genero, ingresos_fijos, mora_franja, nivel_estudios, ocupacion, pasivos, personas_a_cargo, plazo, saldo_capital, saldo_vencido, score, tasa, tiempo_actividad, tiempo_residencia, tipo_contrato, tipo_vivienda, monto_desembolso, dias_mora.
-
-(Revisar Códigos/ para la lista exacta usada en modelos.)
-
-Resultados clave (resumen)
-
-Se identifican al menos dos perfiles de producto (montos/plazos distintos) que requieren reglas de negocio diferenciadas.
-
-El score crediticio es un predictor importante para mora; conviene evaluarlo con umbrales según riesgo.
-
-El desbalance en las franjas de mora exige usar métricas y técnicas específicas (AUC-PR, remuestreo o algoritmos resistentes al desbalance).
-
-Reducción de variables redundantes mejora estabilidad de los modelos y facilita interpretación.
-
-Métricas usadas
-
-Clasificación: Precision, Recall, F1-score, AUC-PR, matriz de confusión.
-
-Regresión: MAE, RMSE, R² ajustado.
-
-Pruebas estadísticas: Kruskal-Wallis, chi-cuadrado, correlaciones Pearson / V de Cramér.
-
-Instrucciones para reproducir
-
-Clonar el repositorio:
-
-git clone https://github.com/mahuizg/AnalisisDentix.git
-cd AnalisisDentix
-
-
-Recomendado ejecutar en RStudio o con Rscript. Paquetes sugeridos:
-
-install.packages(c(
-  "tidyverse","data.table","janitor","ggplot2",
-  "FactoMineR","factoextra","glmnet","caret",
-  "randomForest","naniar","pROC","PRROC"
-))
-
-
-Flujo de ejecución sugerido (los nombres pueden variar; revisar Códigos/):
-
-00_preprocessing.R — limpieza y creación de variables.
-
-01_univariate_analysis.R — análisis univariado.
-
-02_bivariate_correlations.R — correlaciones y pruebas.
-
-03_feature_selection.R — selección de variables.
-
-04_modeling_mora.R — modelos de clasificación para mora.
-
-05_modeling_monto.R — modelos de regresión para monto.
-
-06_evaluation_and_reports.R — métricas finales y exportación de resultados.
-
-Ejemplo de ejecución de un script:
-
-Rscript Códigos/00_preprocessing.R
-
-Contribuciones
-
-Para proponer cambios: realizar un fork, crear una rama con tus cambios, y abrir un Pull Request.
-
-Para modificaciones grandes, abrir un issue explicando el cambio propuesto antes de empezar.
-
-Autoría y créditos
-
-Trabajo desarrollado por estudiantes del Tecnológico de Monterrey, Campus Querétaro, como parte del curso de métodos multivariados en ciencia de datos. Los autores y documentación completa están en los reportes incluidos.
-
-Licencia
-
-Revisar el archivo LICENSE en la raíz del repositorio (MIT).
+Este proyecto permitió construir una visión integral del comportamiento credicticio de los clientes de Dentix, generando un análsis de datos completo y la creación de modelos predictivos. A lo largo del proyecto, se identificaron insights importantes que nos permitieron proponer soluciones potenciales para la rentabilidad de Dentix. 
