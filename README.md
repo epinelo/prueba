@@ -1,4 +1,4 @@
-## Analisis Dentix
+# Analisis Dentix
 
 Repositorio con el análisis de datos y modelos desarrollados para Dentix (Colombia). Contiene limpieza y preparación de datos, análisis descriptivo (univariado y bivariado), selección de variables, modelado para predicción de mora y modelado para estimar monto de desembolso, además de los reportes técnicos y ejecutivos.
 
