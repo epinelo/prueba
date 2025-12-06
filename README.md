@@ -1,6 +1,6 @@
 # Análisis Dentix
 
-Las Clínicas de Dentix ofrecen créditos para que sus clientes financien tratamientos odontológicos. Se observa mora y variabilidad de la mora entre clínicas y asesores. Las decisiones de aprobación y condiciones no siempre son homogéneas. Se desea anticipar qué créditos pueden caer en mora al momento de originarse, usando la base de datos proporcionada por la empresa. Este repositorio contiene el análisis de datos y modelos desarrollados para Dentix que incluyen limpieza y preparación de datos, análisis descriptivo (univariado y bivariado), gráficos y visualizaciones, selección de variables y modelos de predicción.
+Las clínicas de Dentix ofrecen créditos para que sus clientes financien tratamientos odontológicos. Se observa mora y variabilidad de la mora entre clínicas y asesores. Las decisiones de aprobación y condiciones no siempre son homogéneas. Se desea anticipar qué créditos pueden caer en mora al momento de originarse, usando la base de datos proporcionada por la empresa. Este repositorio contiene el análisis de datos y modelos desarrollados para Dentix que incluyen limpieza y preparación de datos, análisis descriptivo (univariado y bivariado), gráficos y visualizaciones, selección de variables y modelos de predicción.
 
 ## Estructura general
 
