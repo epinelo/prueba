@@ -27,7 +27,7 @@ Repositorio con el análisis de datos y modelos desarrollados para Dentix (Colom
     - Categóricas: nivel_estudios, estado_civil, tipo_vivienda, estrato, actividad_económica, tipo_contrato, ocupacion, genero, clinica, comercial, region, lugar_nacimiento, mora_franja 
 edad, tiempo_residencia, tiempo_actividad, personas_a_cargo
 
-## Metodología (pasos principales)
+## Metodología 
 
 ### Preprocesamiento
 
@@ -55,7 +55,7 @@ edad, tiempo_residencia, tiempo_actividad, personas_a_cargo
 - Regresión para monto_desembolso.
 - Validación cruzada y control de sobreajuste.
 
-## Resultados clave (resumen)
+## Resultados clave 
 
 - Se identificaron 6 perfiles diferentes dentro de la clientela de Dentix.
 - Dentix puede aumentar los montos ofrecidos, ofrecer plazos más largos o mejorar las tasas a los clientes del perfil 6 (empleados padres de familia).
