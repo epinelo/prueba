@@ -21,7 +21,7 @@ Repositorio con el análisis de datos y modelos desarrollados para Dentix (Colom
 
 ## Resumen del dataset
 
-- Observaciones: ~46,329 registros (datos anonimizados).
+- Observaciones: 46,329 registros (datos anonimizados).
 - Variables:
     - Numéricas: ingresos_fijos, activos, pasivos, cuota_credito,cuota_mensual, saldo_capital, saldo_vencido, dias_mora, score, monto_desembolso, plazo, tasa,
     - Categóricas: nivel_estudios, estado_civil, tipo_vivienda, estrato, actividad_económica, tipo_contrato, ocupacion, genero, clinica, comercial, region, lugar_nacimiento, mora_franja 
